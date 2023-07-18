@@ -1,0 +1,72 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fazer Pedido</title>
+    <style>
+        /* .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .logo {
+            width: 400px; /* Ajuste o valor conforme necessário 
+        } */
+    </style>
+</head>
+<body>
+    <h1>Fazer Pedido</h1>
+    <div class="logo-container">
+        <!-- <img class="logo" src="{{ url_for('static', filename='image.jpg') }}" alt="Imagem de exemplo"> -->
+    </div>
+
+    <form method="POST" action="/adicionar-pedido">
+       
+    
+        <label>Cliente: </label>
+        <input type="text" name="cliente" value="{{ cliente }}"><br>
+
+        <label>Opção: </label>
+        <select name="opcao">
+            <option value="Opção 1" {% if opcao == 'Opção 1' %}selected{% endif %}>Opção 1</option>
+            <option value="Opção 2" {% if opcao == 'Opção 2' %}selected{% endif %}>Opção 2</option>
+            <option value="Opção 3" {% if opcao == 'Opção 3' %}selected{% endif %}>Opção 3</option>
+            <option value="Opção 4" {% if opcao == 'Opção 4' %}selected{% endif %}>Opção 4</option>
+            <option value="Opção 5" {% if opcao == 'Opção 5' %}selected{% endif %}>Opção 5</option>
+        </select><br>
+
+        <label>Quantidade: </label>
+        <input type="text" name="quantidade" value="{{ quantidade }}"><br>
+
+        <input type="submit" value="Adicionar Item">
+    </form>
+
+    {% if pedidos %}
+        <h2>Itens do Pedido:</h2>
+        <ul>
+            {% for item in pedidos[-1].itens %}
+                <li>{{ item.nome_produto }} - Quantidade: {{ item.quantidade }} - Valor: R$ {{ item.valor }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Total do Pedido: R$ {{ pedidos[-1].calcular_total() }}</h2>
+    {% endif %}
+
+    <h2>
+        <ul>
+            <li>1-Estrogonofe de frango arroz e legumes</li>
+            <li>2-Lasanha arroz primavera</li>
+            <li>3-Carne de panela arroz primavera feijão</li>
+            <li>4-Escondidinho carne moída e legumes</li>
+            <li>5-Purê de batata carne moída e legumes</li>
+        </ul>
+    </h2>
+
+    <a href="/pedidos">Ver Pedidos</a>
+
+
+    
+</body>
+</html>

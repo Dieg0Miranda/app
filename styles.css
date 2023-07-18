@@ -1,0 +1,64 @@
+body {
+
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+
+}
+
+/* .content {
+  display: flex;
+}
+
+.logo {
+  width: 300px; /* Ajuste o tamanho desejado */
+ /* height: auto;  Mantém a proporção original da imagem } */
+
+h1 {
+  color: #333;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+select {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.total-geral {
+  font-weight: bold;
+}
+
+a {
+  color: #4caf50;
+}
+
+

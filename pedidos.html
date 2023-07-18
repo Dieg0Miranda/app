@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pedidos</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .cliente {
+            margin-bottom: 20px;
+        }
+
+        .cliente h2 {
+            margin-bottom: 5px;
+        }
+
+        .cliente ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .cliente li {
+            margin-bottom: 5px;
+        }
+
+        .total-geral {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pedidos</h1>
+    {% for pedido in pedidos %}
+        <div class="cliente">
+            <h2>Cliente: {{ pedido.nome_cliente }}</h2>
+            <ul>
+                {% for item in pedido.itens %}
+                    <li>{{ item.nome_produto }} - Quantidade: {{ item.quantidade }} - Valor: R$ {{ item.valor }}
+                        <form action="/excluir-item" method="POST" style="display: inline;">
+                            <input type="hidden" name="cliente" value="{{ pedido.nome_cliente }}">
+                            <input type="hidden" name="produto" value="{{ item.nome_produto }}">
+                            <input type="submit" value="Excluir Item">
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>Total do Cliente: R$ {{ pedido.calcular_total() }}</p>
+        </div>
+    {% endfor %}
+    <p class="total-geral">Total Geral: R$ {{ calcular_total_geral() }}</p>
+
+    <a href="/">Realizar Novo Pedido</a>
+
+    <form action="/salvar-pedidos" method="POST">
+        <input type="submit" value="Salvar Pedidos">
+    </form>
+    
+
+</body>
+</html>
